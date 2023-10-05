@@ -46,8 +46,9 @@ const Index = () => {
   );
 
   return (
-    <div className="flex flex-col w-full items-center justify-center  min-h-screen bg-[#0e1217]">
-      <Card className="max-w-full w-[550px] h-[650px]  backdrop-sepia-0 border-solid border-[1px] border-gray-400 shadow-lg shadow-gray-500 bg-white">
+    
+    <div className="bg-authImage w-[100vw] h-[100vh] bg-cover bg-center relative justify-center items-center flex flex-col ">
+      <Card className="w-[550px] h-[650px] overflow-hidden rounded-[20px] border-solid border-gray-400 border-[3px]  backdrop-blur-[50px] bg-red bg-opacity-[0.1]">
         <CardBody className="overflow-hidden">
           <Tabs
             fullWidth
@@ -72,7 +73,7 @@ const Index = () => {
                     onClear={() => console.log("input cleared")}
                     isRequired
                     variant="underlined"
-                    color="success"
+                    color="danger"
                   />
                 </div>
                 <div className="flex items-center w-full flex-col mt-5">
@@ -97,7 +98,7 @@ const Index = () => {
                         </button>
                       }
                       type={isVisible ? "text" : "password"}
-                      color="success"
+                      color="danger"
                     />
                   </div>
                   <div className="w-full text-end">
@@ -153,6 +154,7 @@ const Index = () => {
                     onClear={() => console.log("input cleared")}
                     isRequired
                     className=" w-full ml-5"
+                    color="danger"
                   />
                   {/* <Input isRequired label="Last Name" placeholder="Enter Last name" type="text" className="pl-1" /> */}
                 </div>
@@ -169,10 +171,11 @@ const Index = () => {
                     onClear={() => console.log("input cleared")}
                     isRequired
                     className="w-full ml-5"
+                    color="danger"
                   />
                 </div>
-                <div className="w-full">
-                  <FaUserCircle />
+                <div className="flex w-full">
+                  <FaUserCircle className=" mt-4 text-[1.5rem]" />
                   <Input
                     isClearable
                     type="text"
@@ -181,12 +184,13 @@ const Index = () => {
                     placeholder="Enter your username"
                     onClear={() => console.log("input cleared")}
                     isRequired
-                    className="w-full "
+                    className="w-full ml-5"
+                    color="danger"
                   />
                 </div>
 
-                <div className="w-full">
-                  <IoMail className="" />
+                <div className="flex w-full">
+                  <IoMail className=" mt-4 text-[1.5rem]" />
                   <Input
                     isClearable
                     type="email"
@@ -195,12 +199,13 @@ const Index = () => {
                     placeholder="Enter your email"
                     onClear={() => console.log("input cleared")}
                     isRequired
-                    className=""
+                    className="w-full ml-5"
+                    color="danger"
                   />
                 </div>
 
-                <div className="w-full">
-                  <FaMobile />
+                <div className="flex w-full">
+                  <FaMobile className=" mt-4 text-[1.5rem]" />
                   <Input
                     isClearable
                     type="text"
@@ -209,22 +214,25 @@ const Index = () => {
                     placeholder="Enter your Mobile"
                     onClear={() => console.log("input cleared")}
                     isRequired
-                    className="w-full"
+                    className="w-full ml-5"
+                    color="danger"
                   />
                 </div>
 
-                <div className="w-full">
-                  <BiSolidLock />
+                <div className="flex w-full">
+                  <BiSolidLock className=" mt-4 text-[1.5rem]" />
                   <Input
                     label="Password"
                     variant="underlined"
                     placeholder="Enter your password"
                     isRequired
+                    color="danger"
                     endContent={
                       <button
                         className="focus:outline-none"
                         type="button"
                         onClick={toggleVisibility}
+                        color="danger"
                       >
                         {isVisible ? (
                           <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
@@ -234,7 +242,7 @@ const Index = () => {
                       </button>
                     }
                     type={isVisible ? "text" : "password"}
-                    className="w-full"
+                    className="w-full ml-5"
                   />
                 </div>
 
@@ -244,6 +252,7 @@ const Index = () => {
                       <Button
                         variant="bordered"
                         className="capitalize w-[15rem] "
+                        color="primary"
                       >
                         {selectedValue}
                       </Button>
@@ -259,10 +268,7 @@ const Index = () => {
                       <DropdownItem key="Employee type">
                         Employee Type
                       </DropdownItem>
-                      <DropdownItem key="number">Number</DropdownItem>
-                      <DropdownItem key="date">Date</DropdownItem>
-                      <DropdownItem key="single_date">Single Date</DropdownItem>
-                      <DropdownItem key="iteration">Iteration</DropdownItem>
+                      <DropdownItem></DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
                   <Dropdown>
@@ -270,6 +276,7 @@ const Index = () => {
                       <Button
                         variant="bordered"
                         className="capitalize w-[15rem] h-full ml-1"
+                        color="primary"
                       >
                         {selectedGender}
                       </Button>
@@ -304,7 +311,7 @@ const Index = () => {
                   </Link>
                 </p>
                 <div className="flex gap-2 justify-end">
-                  <Button fullWidth variant="shadow" color="primary">
+                  <Button fullWidth variant="shadow" color="secondary" className="hover:bg-red-600">
                     Sign up
                   </Button>
                 </div>
