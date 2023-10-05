@@ -170,18 +170,19 @@ export default function App() {
 
     const topContent = React.useMemo(() => {
         return (
-            <div className="flex flex-col gap-4">
-                <div className="flex justify-between gap-3 items-end">
+            <div className="flex flex-col gap-4 ">
+                <div className="flex justify-between items-center w-full h-[60px]  mt-5">
                     <Input
                         isClearable
-                        className="w-full sm:max-w-[44%]"
+                        className="w-full sm:max-w-[44%] ml-3"
                         placeholder="Search by name..."
                         startContent={<SearchIcon />}
                         value={filterValue}
                         onClear={() => onClear()}
                         onValueChange={onSearchChange}
+                        size="md"
                     />
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 mr-3">
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
                                 <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
