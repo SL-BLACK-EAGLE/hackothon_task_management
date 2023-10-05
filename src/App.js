@@ -5,7 +5,6 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import PageContent from "./components/PageContent";
 
-
 function App() {
   return (
     <div className="App">
