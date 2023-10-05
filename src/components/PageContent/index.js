@@ -2,7 +2,7 @@ import AppRoutes from "../AppRoutes";
 
 function PageContent() {
     return (
-        <div className="PageContent">
+        <div className="PageContent flex-1">
             <AppRoutes />
         </div>
     );
