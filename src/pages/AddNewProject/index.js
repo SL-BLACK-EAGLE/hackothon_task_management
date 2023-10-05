@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, Button } from "@nextui-org/react";
 import '../AddNewProject/AddNewProject.css';
 import MainComponent from "../AddNewProject/components/mainComponents";
-
+import Popup from "../../components/Popup/";
 
 export default function index() {
 
@@ -16,7 +16,7 @@ export default function index() {
         </div>
         <p className="text-start ps-6 text-2xl pt-6">Add Members</p><br />
         <div className="flex w-[800px] flex-wrap md:flex-nowrap gap-4 h-16 ps-6">
-          <Input type="text" label="Member Name" className='input01 drop-shadow-lg' />
+          <Popup />
         </div><br /><br />
         <div className="w-[800px] ms-6">
           <MainComponent />

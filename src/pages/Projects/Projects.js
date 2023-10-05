@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
     Table,
     TableHeader,
@@ -14,14 +14,19 @@ import {
     DropdownItem,
     Chip,
     User,
-    Pagination,
+    Pagination, Link,
 } from "@nextui-org/react";
-import { PlusIcon } from "./PlusIcon";
-import { VerticalDotsIcon } from "./VerticalDotsIcon";
-import { SearchIcon } from "./SearchIcon";
-import { ChevronDownIcon } from "./ChevronDownIcon";
-import { columns, users, statusOptions } from "./data";
-import { capitalize } from "./utils";
+import {PlusIcon} from "./PlusIcon";
+import {VerticalDotsIcon} from "./VerticalDotsIcon";
+import {SearchIcon} from "./SearchIcon";
+import {ChevronDownIcon} from "./ChevronDownIcon";
+import {columns, users, statusOptions} from "./data";
+import {capitalize} from "./utils";
+import AddNewProject from "../AddNewProject";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const statusColorMap = {
     active: "success",
@@ -31,13 +36,17 @@ const statusColorMap = {
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
 
+
 export default function App() {
+    const navigate = useNavigate();
     const [filterValue, setFilterValue] = React.useState("");
     const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
     const [visibleColumns, setVisibleColumns] = React.useState(new Set(INITIAL_VISIBLE_COLUMNS));
     const [statusFilter, setStatusFilter] = React.useState("all");
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
     const [sortDescriptor, setSortDescriptor] = React.useState({
+
         column: "age",
         direction: "ascending",
     });
@@ -70,6 +79,8 @@ export default function App() {
         return filteredUsers;
     }, [users, filterValue, statusFilter]);
 
+
+
     const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
@@ -94,7 +105,7 @@ export default function App() {
             case "name":
                 return (
                     <User
-                        avatarProps={{ radius: "full", size: "sm", src: user.avatar }}
+                        avatarProps={{radius: "full", size: "sm", src: user.avatar}}
                         classNames={{
                             description: "text-default-500",
                         }}
@@ -128,7 +139,7 @@ export default function App() {
                         <Dropdown className="bg-background border-1 border-default-200">
                             <DropdownTrigger>
                                 <Button isIconOnly radius="full" size="sm" variant="light">
-                                    <VerticalDotsIcon className="text-default-400" />
+                                    <VerticalDotsIcon className="text-default-400"/>
                                 </Button>
                             </DropdownTrigger>
                             <DropdownMenu>
@@ -159,6 +170,8 @@ export default function App() {
         }
     }, []);
 
+
+
     const topContent = React.useMemo(() => {
         return (
             <div className="flex flex-col gap-4">
@@ -171,7 +184,7 @@ export default function App() {
                         }}
                         placeholder="Search by name..."
                         size="sm"
-                        startContent={<SearchIcon className="text-default-300" />}
+                        startContent={<SearchIcon className="text-default-300"/>}
                         value={filterValue}
                         variant="bordered"
                         onClear={() => setFilterValue("")}
@@ -181,7 +194,7 @@ export default function App() {
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
                                 <Button
-                                    endContent={<ChevronDownIcon className="text-small" />}
+                                    endContent={<ChevronDownIcon className="text-small"/>}
                                     size="sm"
                                     variant="flat"
                                 >
@@ -206,7 +219,7 @@ export default function App() {
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
                                 <Button
-                                    endContent={<ChevronDownIcon className="text-small" />}
+                                    endContent={<ChevronDownIcon className="text-small"/>}
                                     size="sm"
                                     variant="flat"
                                 >
@@ -230,10 +243,13 @@ export default function App() {
                         </Dropdown>
                         <Button
                             className="bg-foreground text-background"
-                            endContent={<PlusIcon />}
+                            endContent={<PlusIcon/>}
                             size="sm"
+                            onClick={() => {
+                                return navigate('/addnew');
+                            }}
                         >
-                            Add New
+                            Add New Project
                         </Button>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ export default function PopupMenu() {
 
     return (
         <div className="flex flex-col gap-2 ">
-            <Button onPress={onOpen} className="max-w-fit">Open Modal</Button>
+            <Button onPress={onOpen} className="max-w-fit">Assign members</Button>
             {/* <RadioGroup
           label="Select modal placement"
           orientation="horizontal"
