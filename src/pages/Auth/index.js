@@ -19,6 +19,7 @@ import {BiSolidLock} from "react-icons/bi";
 import {FaUser, FaMobile, FaUserCircle} from "react-icons/fa";
 import {IoMail} from "react-icons/io5";
 import axios from "axios";
+// import Loading from "../../components/Loading/loading";
 
 const Index = () => {
     const [selected, setSelected] = React.useState("login");
@@ -28,6 +29,20 @@ const Index = () => {
     const [genderType, setGenderType] = React.useState([]);
     const [selectedKeys, setSelectedKeys] = React.useState([1]);
     const [isLoaded, setIsLoaded] = React.useState(false);
+
+    // registration form
+    const [firstName, setFirstName] = React.useState("");
+    const [lastName, setLastName] = React.useState("");
+    const [userName, setUserName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [mobile, setMobile] = React.useState("");
+    const [password, setPassword] = React.useState("");
+
+    const   [loginEmail, setLoginEmail] = React.useState("");
+    const [loginPassword, setLoginPassword] = React.useState("");
+
+// console.log(selectedKeys);
+
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -39,53 +54,90 @@ const Index = () => {
     }, [selectedKeys]);
 
 
-
     useEffect(() => {
         getAllType();
     }, []);
 
+    var keys = "";
+//signup request with axios
+    const SignUpRequest = async () => {
+        // const response = await axios.POST('http://localhost/task_managment/signupprocess.php');
+        // const data = response.data;
+        //xmlhttprequest with formdata
+
+        if (selectedValue === "Male") {
+            keys = 1;
+        } else if (selectedValue === "Female") {
+            keys = 2;
+        } else {
+
+        }
+
+
+        const formData = new FormData();
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
+        formData.append('username', userName);
+        formData.append('email', email);
+        formData.append('mobile', mobile);
+        formData.append('password', password);
+        formData.append('gender_id', keys);
+
+        const response = await axios.post('http://localhost/task_managment/signupprocess.php', formData);
+        const data = response.data;
+        if (data.status === 200) alert("data inserted successfully")
+        alert("data not inserted")
+        if (data === "success") {
+            alert("data inserted successfully")
+            window.location.href = "http://localhost:3000/";
+        } else {
+
+        }
+
+
+
+
+    };
+
+
+    //login request with axios
+    const LoginRequest = async () => {
+
+
+        const formData = new FormData();
+        formData.append('email', loginEmail);
+        formData.append('password', loginPassword);
+
+        const response = await axios.post('http://localhost/task_managment/loginprocess.php', formData);
+        const data = response.data;
+        console.log(data)
+        if (data.status === 200) {
+            console.log(data);
+
+            if (data === "success") {
+                window.location.href = "http://localhost:3000/";
+            } else {
+                alert(data);
+            }
+        }
+    }
 
 
     const getAllType = async () => {
         const response = await axios.get('http://localhost/task_managment/genderload.php');
         const data = response.data;
         setGenderType(data);
-        console.log(data);
         setIsLoaded(true);
     };
     if (!isLoaded) {
         //loading screen if data is not loaded
         return (
             <div className="flex items-center justify-center h-screen">
-                <div className="flex flex-col items-center justify-center">
-                    <div className="flex items-center justify-center">
-                        <svg
-                            className="animate-spin -ml-1 mr-3 h-20 w-20 text-red-600"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24">
-                            <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"></circle>
-                            <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                        </svg>
-                    </div>
-                    <div className="text-2xl font-semibold text-center text-red-600">
-                        Loading...
-                    </div>
-                </div>
+                {/*<Loading/>*/}
             </div>
         );
 
     }
-
 
 
     return (
@@ -117,10 +169,13 @@ const Index = () => {
                                         type="email"
                                         label="Email"
                                         placeholder="Enter your email"
-                                        onClear={() => console.log("input cleared")}
-                                        isRequired
+                                        // isRequired
+                                        // isInvalid={true}
+                                        errorMessage="Please enter a valid email"
                                         variant="underlined"
                                         color="danger"
+                                        value={loginEmail}
+                                        onValueChange={setLoginEmail}
                                     />
                                 </div>
                                 <div className="flex items-center w-full flex-col mt-5">
@@ -131,6 +186,8 @@ const Index = () => {
                                             label="Password"
                                             variant="underlined"
                                             placeholder="Enter your password"
+                                            value={loginPassword}
+                                            onValueChange={setLoginPassword}
                                             endContent={
                                                 <button
                                                     className="focus:outline-none"
@@ -183,6 +240,7 @@ const Index = () => {
                                         variant="shadow"
                                         color="primary"
                                         className="w-[20rem] text-[1.5rem] font-semibold hover:bg-green-500 hover:text-black  ease hover:ease-in hover:duration-500"
+                                        onClick={LoginRequest}
                                     >
                                         Login
                                     </Button>
@@ -205,6 +263,8 @@ const Index = () => {
                                         isRequired
                                         className=" w-full ml-5"
                                         color="danger"
+                                        value={firstName}
+                                        onValueChange={setFirstName}
                                     />
                                     {/* <Input isRequired label="Last Name" placeholder="Enter Last name" type="text" className="pl-1" /> */}
                                 </div>
@@ -222,6 +282,8 @@ const Index = () => {
                                         isRequired
                                         className="w-full ml-5"
                                         color="danger"
+                                        value={lastName}
+                                        onValueChange={setLastName}
                                     />
                                 </div>
                                 <div className="flex w-full">
@@ -236,6 +298,8 @@ const Index = () => {
                                         isRequired
                                         className="w-full ml-5"
                                         color="danger"
+                                        value={userName}
+                                        onValueChange={setUserName}
                                     />
                                 </div>
 
@@ -251,6 +315,8 @@ const Index = () => {
                                         isRequired
                                         className="w-full ml-5"
                                         color="danger"
+                                        value={email}
+                                        onValueChange={setEmail}
                                     />
                                 </div>
 
@@ -266,6 +332,8 @@ const Index = () => {
                                         isRequired
                                         className="w-full ml-5"
                                         color="danger"
+                                        value={mobile}
+                                        onValueChange={setMobile}
                                     />
                                 </div>
 
@@ -277,6 +345,8 @@ const Index = () => {
                                         placeholder="Enter your password"
                                         isRequired
                                         color="danger"
+                                        value={password}
+                                        onValueChange={setPassword}
                                         endContent={
                                             <button
                                                 className="focus:outline-none"
@@ -306,8 +376,9 @@ const Index = () => {
                                                 variant="bordered"
                                                 className="capitalize w-[15rem] h-full ml-1"
                                                 color="primary"
-                                                onClick={getAllType}
+                                                // onClick={getAllType}
                                                 size="lg"
+
                                             >
                                                 {selectedValue}
                                             </Button>
@@ -336,12 +407,15 @@ const Index = () => {
                                         size="sm"
                                         onPress={() => setSelected("login")}
                                         className="cursor-pointer"
+
                                     >
                                         Login
                                     </Link>
                                 </p>
                                 <div className="flex gap-2 justify-end">
-                                    <Button fullWidth variant="shadow" color="secondary" className="hover:bg-red-600">
+                                    <Button fullWidth variant="shadow" color="secondary" className="hover:bg-red-600"
+                                            onClick={SignUpRequest}
+                                    >
                                         Sign up
                                     </Button>
                                 </div>
