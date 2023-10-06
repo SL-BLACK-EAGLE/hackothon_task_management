@@ -8,6 +8,7 @@ module.exports = {
     theme: {
         extend: {
             backgroundImage:{
+
                 'authImage':"url('/public/assets/auth.jpg')",
                 'profile':"url(/public/assets/profile.jpg)",
 
@@ -17,6 +18,9 @@ module.exports = {
                 'rubic':['Rubik'],
                 'poppins':['Poppins'],
               },
+
+            },
+
         },
     },
     darkMode: "class",

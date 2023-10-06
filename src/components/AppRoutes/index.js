@@ -4,6 +4,7 @@ import Auth from "../../pages/Auth";
 import Employee from "../../pages/Employee";
 import Projects from "../../pages/Projects";
 import Settings from "../../pages/Settings";
+import AddNewProject from "../../pages/AddNewProject";
 
 function AppRoutes() {
     return (
@@ -14,6 +15,7 @@ function AppRoutes() {
             <Route path="/employee" element={<Employee/>}></Route>
             <Route path="/auth" element={<Auth/>}></Route>
             <Route path="/settings" element={<Settings/>}></Route>
+            <Route path="/addnew" element={<AddNewProject/>}></Route>
         </Routes>
 
     );
