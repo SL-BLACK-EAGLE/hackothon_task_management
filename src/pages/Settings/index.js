@@ -13,7 +13,7 @@ import { HeartIcon } from "./HeartIcon.js";
 import { PlusIcon } from "./PlusIcon.js";
 
 const ProfilePage = () => {
-  const [isSelected, setIsSelected] = React.useState(false);
+
 
   const user = {
     name: "Junior Garcia",

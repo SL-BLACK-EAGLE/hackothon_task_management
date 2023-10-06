@@ -1,23 +1,22 @@
 import './App.css';
-import {Space} from "antd";
+
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import PageContent from "./components/PageContent";
 
+
 function App() {
-  return (
-    <div className="App">
+    return (
         <div className="App">
-            <Navbar />
+            <Navbar/>
             <div className="SideMenuAndPageContent">
                 <Sidebar></Sidebar>
                 <PageContent></PageContent>
             </div>
-            <Footer />
+            <Footer/>
         </div>
-    </div>
-  );
+    )
 }
 
 export default App;

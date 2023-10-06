@@ -1,4 +1,8 @@
-import React from "react";
+
+
+
+
+
 
 const columns = [
     {name: "ID", uid: "id", sortable: true},
@@ -44,5 +48,6 @@ const users = [
 
 
 ];
+
 
 export {columns, users, statusOptions};

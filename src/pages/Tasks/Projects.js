@@ -20,10 +20,12 @@ import {PlusIcon} from "./PlusIcon";
 import {VerticalDotsIcon} from "./VerticalDotsIcon";
 import {SearchIcon} from "./SearchIcon";
 import {ChevronDownIcon} from "./ChevronDownIcon";
-import {columns, users, statusOptions} from "./data";
+import {columns, users, statusOptions } from "./data";
 import {capitalize} from "./utils";
 import AddNewProject from "../AddNewProject";
 import {useNavigate} from "react-router-dom";
+
+import axios from "axios";
 
 
 const statusColorMap = {
@@ -48,6 +50,7 @@ export default function App() {
         column: "age",
         direction: "ascending",
     });
+
     const [page, setPage] = React.useState(1);
 
     const pages = Math.ceil(users.length / rowsPerPage);

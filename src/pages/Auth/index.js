@@ -19,6 +19,7 @@ import {BiSolidLock} from "react-icons/bi";
 import {FaUser, FaMobile, FaUserCircle} from "react-icons/fa";
 import {IoMail} from "react-icons/io5";
 import axios from "axios";
+import Loading from "../../components/Loading/loading";
 // import Loading from "../../components/Loading/loading";
 
 const Index = () => {
@@ -95,15 +96,11 @@ const Index = () => {
 
         }
 
-
-
-
     };
 
 
     //login request with axios
     const LoginRequest = async () => {
-
 
         const formData = new FormData();
         formData.append('email', loginEmail);
@@ -111,11 +108,12 @@ const Index = () => {
 
         const response = await axios.post('http://localhost/task_managment/loginprocess.php', formData);
         const data = response.data;
-        console.log(data)
-        if (data.status === 200) {
+
+        if (data === "success") {
             console.log(data);
 
             if (data === "success") {
+                alert("successfully");
                 window.location.href = "http://localhost:3000/";
             } else {
                 alert(data);
@@ -134,7 +132,7 @@ const Index = () => {
         //loading screen if data is not loaded
         return (
             <div className="flex items-center justify-center h-screen">
-                {/*<Loading/>*/}
+                <Loading/>
             </div>
         );
 

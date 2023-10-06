@@ -12,14 +12,15 @@ module.exports = {
                 'authImage':"url('/public/assets/auth.jpg')",
                 'profile':"url(/public/assets/profile.jpg)",
 
-            },  fontFamily:{
+            },
+            fontFamily:{
                 'abril':['Abril Fatface'],
                 'shadows':['Shadows Into Light'],
                 'rubic':['Rubik'],
                 'poppins':['Poppins'],
-              },
-
             },
+
+
 
         },
     },
