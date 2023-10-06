@@ -22,6 +22,7 @@ import axios from "axios";
 // import Loading from "../../components/Loading/loading";
 
 const Index = () => {
+
     const [selected, setSelected] = React.useState("login");
     const [isSelected, setIsSelected] = React.useState(false);
     const [isVisible, setIsVisible] = React.useState(false);
@@ -426,5 +427,6 @@ const Index = () => {
             </Card>
         </div>
     );
+
 };
 export default Index;
