@@ -41,8 +41,8 @@ function SideMenu() {
                         key: "/",
                     },
                     {
-                        label: "Projects",
-                        key: "/projects",
+                        label: "Tasks",
+                        key: "/tasks",
                         icon: <GrProjects/>,
                     },
                     {

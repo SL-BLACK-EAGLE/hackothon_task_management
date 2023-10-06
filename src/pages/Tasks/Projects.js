@@ -23,9 +23,7 @@ import {ChevronDownIcon} from "./ChevronDownIcon";
 import {columns, users, statusOptions} from "./data";
 import {capitalize} from "./utils";
 import AddNewProject from "../AddNewProject";
-import { useNavigate } from "react-router-dom";
-
-
+import {useNavigate} from "react-router-dom";
 
 
 const statusColorMap = {
@@ -80,7 +78,6 @@ export default function App() {
     }, [users, filterValue, statusFilter]);
 
 
-
     const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
@@ -115,6 +112,13 @@ export default function App() {
                         {user.email}
                     </User>
                 );
+            case "project":
+                return (
+                    <div className="flex flex-col">
+                        <p className="text-bold text-small capitalize">{cellValue}</p>
+                        <p className="text-bold text-tiny capitalize text-default-500">{user.team}</p>
+                    </div>
+                );
             case "role":
                 return (
                     <div className="flex flex-col">
@@ -122,6 +126,7 @@ export default function App() {
                         <p className="text-bold text-tiny capitalize text-default-500">{user.team}</p>
                     </div>
                 );
+
             case "status":
                 return (
                     <Chip
@@ -169,7 +174,6 @@ export default function App() {
             setFilterValue("");
         }
     }, []);
-
 
 
     const topContent = React.useMemo(() => {
@@ -249,7 +253,7 @@ export default function App() {
                                 return navigate('/addnew');
                             }}
                         >
-                            Add New Project
+                            Add New Tasks
                         </Button>
                     </div>
                 </div>

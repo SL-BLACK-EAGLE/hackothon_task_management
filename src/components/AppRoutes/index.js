@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import Dashboard from "../../pages/Dashboard";
 import Auth from "../../pages/Auth";
 import Employee from "../../pages/Employee";
-import Projects from "../../pages/Projects";
+import Tasks from "../../pages/Tasks";
 import Settings from "../../pages/Settings";
 import AddNewProject from "../../pages/AddNewProject";
 
@@ -11,7 +11,7 @@ function AppRoutes() {
 
         <Routes>
             <Route path="/" element={<Dashboard/>}></Route>
-            <Route path="/projects" element={<Projects/>}></Route>
+            <Route path="/tasks" element={<Tasks/>}></Route>
             <Route path="/employee" element={<Employee/>}></Route>
             <Route path="/auth" element={<Auth/>}></Route>
             <Route path="/settings" element={<Settings/>}></Route>

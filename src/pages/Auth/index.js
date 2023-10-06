@@ -143,11 +143,8 @@ const Index = () => {
     return (
 
 
-        <div
-            className="bg-authImage w-[100vw] h-[100vh] bg-cover bg-center relative justify-center items-center flex flex-col ">
-
-            <Card
-                className="w-[550px] h-[650px] overflow-hidden rounded-[20px] border-solid border-gray-400 border-[3px]  backdrop-blur-[50px] bg-opacity-[0.1]">
+        <div className="bg-authImage w-[100vw] h-[100vh] bg-cover bg-center relative justify-center items-center flex flex-col ">
+            <Card className="w-[550px] h-[650px] overflow-hidden rounded-[20px] border-solid border-gray-400 border-[3px]  backdrop-blur-[50px] bg-red bg-opacity-[0.1]">
                 <CardBody className="overflow-hidden">
                     <Tabs
                         fullWidth
